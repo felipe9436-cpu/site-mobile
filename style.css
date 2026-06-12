@@ -1,0 +1,205 @@
+/* Configurações Gerais de Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+}
+
+/* --- HEADER --- */
+header {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    background: linear-gradient(180deg, rgba(240, 20, 30, 0.2) 0%, rgba(12, 12, 12, 0) 100%);
+    animation: fadeInDown 1s ease-out;
+}
+
+header h1 {
+    background-color: #F0141E;
+    color: white;
+    display: inline-block;
+    padding: 10px 35px;
+    font-size: 4rem;
+    letter-spacing: -3px;
+    border: 4px solid white;
+    box-shadow: 6px 6px 0px #000;
+    transform: skew(-10deg);
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header p {
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #bbbbbb;
+}
+
+/* --- CONTAINER DA LINHA DO TEMPO --- */
+.timeline-container {
+    position: relative;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Linha Vermelha Vertical */
+.timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #F0141E;
+    box-shadow: 0 0 15px rgba(240, 20, 30, 0.6);
+}
+
+/* --- CARDS / ITENS --- */
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 60px;
+    
+    /* Estado inicial antes da animação rodar */
+    opacity: 0;
+    transform: translateX(-40px);
+    
+    /* Ativa animação de entrada */
+    animation: slideInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Efeito Cascata: Controla o delay de entrada de cada card */
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.4s; }
+.timeline-item:nth-child(4) { animation-delay: 0.6s; }
+.timeline-item:nth-child(5) { animation-delay: 0.8s; }
+.timeline-item:nth-child(6) { animation-delay: 1.0s; }
+.timeline-item:nth-child(7) { animation-delay: 1.2s; }
+.timeline-item:nth-child(8) { animation-delay: 1.4s; }
+.timeline-item:nth-child(9) { animation-delay: 1.6s; }
+.timeline-item:nth-child(10) { animation-delay: 1.8s; }
+
+/* Bolinha da Linha do Tempo */
+.timeline-dot {
+    position: absolute;
+    left: 22px;
+    top: 24px;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border: 4px solid #F0141E;
+    border-radius: 50%;
+    z-index: 2;
+    /* Animação pulsante contínua */
+    animation: pulse 2s infinite;
+}
+
+/* Conteúdo do Card */
+.timeline-content {
+    background-color: #1e1e1e;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Animação de Hover (Passar o mouse) */
+.timeline-content:hover {
+    transform: scale(1.03) translateY(-4px);
+    border-color: #F0141E;
+    box-shadow: 0 10px 20px rgba(240, 20, 30, 0.3);
+}
+
+.year {
+    background-color: #F0141E;
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 12px;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.timeline-content p {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: #b3b3b3;
+    line-height: 1.6;
+}
+
+/* --- INTERRUPTORES DE ANIMAÇÕES (KEYFRAMES) --- */
+
+/* Drop suave do cabeçalho */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito 'Surgir do Nada' estilizado no logo da Marvel */
+@keyframes popIn {
+    from {
+        transform: scale(0) skew(-10deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) skew(-10deg);
+        opacity: 1;
+    }
+}
+
+/* Entrada lateral dos cards */
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Pulsação das bolinhas indicadoras */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(240, 20, 30, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(240, 20, 30, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(240, 20, 30, 0);
+    }
+}
+
+/* Ajustes de tela para celular */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.8rem;
+    }
+    .timeline-container {
+        padding: 0 10px;
+    }
+    .timeline-content {
+        padding: 15px;
+    }
+}
